@@ -3,6 +3,7 @@ import imp
 from tkinter import *
 import settings
 import utils
+from cell import Cell
 
 root = Tk()
 #override the settings of the window
@@ -38,7 +39,11 @@ center_frame.place(
     y=utils.height_prct(20)
     )
 
-
+c1 = Cell()
+c1.create_btn_object(center_frame)
+c1.cell_btn_object.place(
+    x=0, y=0
+)
 
 #Run the window
 root.mainloop() 
