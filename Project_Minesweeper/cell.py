@@ -1,4 +1,5 @@
 from tkinter import Button
+from turtle import left
 
 class Cell:
     def __init__(self, is_mine=False):
@@ -10,6 +11,10 @@ class Cell:
             location,
             text= 'Text'
         )
+        btn.bind('<Button-1>', self.left_click_actions)
         self.cell_btn_object = btn
+
+    def left_click_actions(self, event):
+        print('I am left clicked')
 
     
