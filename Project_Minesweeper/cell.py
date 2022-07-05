@@ -2,14 +2,23 @@ from tkinter import Button
 from turtle import left
 
 class Cell:
-    def __init__(self, is_mine=False):
+    all = []
+    def __init__(self, x, y, is_mine=False):
         self.is_mine = is_mine
         self.cell_btn_object = None
+        self.x = x
+        self.y = y
+
+        #append the object to the Cell.all list
+        Cell.all.append(self)
+
 
     def create_btn_object(self, location):
         btn = Button(
             location,
-            text= 'Text'
+            width=12,
+            height=3,
+            text= f'{self.x},{self.y}'
         )
         btn.bind('<Button-1>', self.left_click_actions) #left click
         btn.bind('<Button-3>', self.right_click_actions) #right click
@@ -23,4 +32,10 @@ class Cell:
         print(event)
         print('I am right clicked')
 
-    
+    @staticmethod
+    def random_mines():
+        pass
+
+    def __repr__(self):
+        return f'Cell({self.x}, {self.y})'
+
