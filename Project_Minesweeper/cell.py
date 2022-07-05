@@ -1,5 +1,6 @@
 from tkinter import Button
 from turtle import left
+import random
 
 class Cell:
     all = []
@@ -33,8 +34,11 @@ class Cell:
         print('I am right clicked')
 
     @staticmethod
-    def random_mines():
-        pass
+    def randomize_mines():
+        picked_cell = random.sample(
+            Cell.all, 9
+        )
+        print(picked_cell)      
 
     def __repr__(self):
         return f'Cell({self.x}, {self.y})'
