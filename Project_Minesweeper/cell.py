@@ -20,8 +20,8 @@ class Cell:
         btn = Button(
             location,
             width=12,
-            height=3
-            
+            height=3,
+            text=f'{self.x},{self.y}'
         )
         btn.bind('<Button-1>', self.left_click_actions) #left click
         btn.bind('<Button-3>', self.right_click_actions) #right click
@@ -30,7 +30,18 @@ class Cell:
     def left_click_actions(self, event):
         if self.is_mine:
             self.show_mine()
+        else:
+            self.show_cell()
 
+    def get_cell_by_axis(self, x, y):
+        #return a cell object based on the value of x,y
+        for cell in Cell.all:
+            if cell.x == x and cell.y == y:
+                return cell
+    
+    def show_cell(self):
+        print(self.get_cell_by_axis(0, 0))
+ 
     def show_mine(self):
         #a logic do interrupt the game and display a message that player lost!
         self.cell_btn_object.configure(bg='red')
