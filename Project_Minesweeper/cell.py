@@ -50,6 +50,7 @@ class Cell:
             self.get_cell_by_axis(self.x + 1, self.y + 1),
             self.get_cell_by_axis(self.x, self.y + 1) 
         ]
+        surrounded_cells = [cell for cell in surrounded_cells if cell is not None]
         print(surrounded_cells)
  
     def show_mine(self):
