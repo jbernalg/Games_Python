@@ -53,9 +53,18 @@ class Cell:
         cells = [cell for cell in cells if cell is not None]
         return cells
 
-    def show_cell(self):
+    @property
+    def surrounded_cell_mines_length(self):
+        counter = 0
+
+        for cell in self.surrounded_cells:
+            if cell.is_mine:
+                counter += 1
         
-        print(surrounded_cells)
+        return counter
+
+    def show_cell(self): 
+        print(self.surrounded_cell_mines_length)
  
     def show_mine(self):
         #a logic do interrupt the game and display a message that player lost!
