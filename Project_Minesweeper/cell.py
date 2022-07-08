@@ -3,6 +3,7 @@ from tkinter import Button, Label
 from turtle import left
 import random
 import settings
+import ctypes
 
 class Cell:
     all = []
@@ -11,6 +12,7 @@ class Cell:
     def __init__(self, x, y, is_mine=False):
         self.is_mine = is_mine
         self.is_opened = False
+        self.is_mine_candidate = False
         self.cell_btn_object = None
         self.x = x
         self.y = y
@@ -95,13 +97,23 @@ class Cell:
         self.is_opened = True
  
     def show_mine(self):
-        #a logic do interrupt the game and display a message that player lost!
         self.cell_btn_object.configure(bg='red')
+        #a logic do interrupt the game and display a message that player lost!
+        ctypes.windll.user32.MessageBoxW(0,'You cliked on a mine', 'Game Over', 0)
+       
 
 
     def right_click_actions(self, event):
-        print(event)
-        print('I am right clicked')
+        if not self.is_mine_candidate:
+            self.cell_btn_object.configure(
+                bg='orange'
+            )
+            self.is_mine_candidate = True
+        else:
+            self.cell_btn_object.configure(
+                bg='SystemButtonFace'
+            )
+            self.is_mine_candidate = False
 
     @staticmethod
     def randomize_mines():
