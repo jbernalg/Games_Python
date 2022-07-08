@@ -20,8 +20,7 @@ class Cell:
         btn = Button(
             location,
             width=12,
-            height=3,
-            text=f'{self.x},{self.y}'
+            height=3
         )
         btn.bind('<Button-1>', self.left_click_actions) #left click
         btn.bind('<Button-3>', self.right_click_actions) #right click
@@ -64,7 +63,7 @@ class Cell:
         return counter
 
     def show_cell(self): 
-        print(self.surrounded_cell_mines_length)
+        self.cell_btn_object.configure(text=self.surrounded_cell_mines_length)
  
     def show_mine(self):
         #a logic do interrupt the game and display a message that player lost!
