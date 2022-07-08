@@ -4,6 +4,7 @@ from turtle import left
 import random
 import settings
 import ctypes
+import sys
 
 class Cell:
     all = []
@@ -53,6 +54,10 @@ class Cell:
                 for cell_obj in self.surrounded_cells:
                     cell_obj.show_cell()
             self.show_cell()
+        
+        #cancel left and right clic events if cell is already opened:
+        self.cell_btn_object.unbind('<Button-1>')
+        self.cell_btn_object.unbind('<Button-3>')
 
     def get_cell_by_axis(self, x, y):
         #return a cell object based on the value of x,y
@@ -93,6 +98,11 @@ class Cell:
                 Cell.cell_count_label_object.configure(
                     text=f'Cells Left: {Cell.cell_count}'
                 )
+            #if this was a min candidate, then for safety we should
+            #configure the background color to SystemButtonFace
+            self.cell_btn_object.configure(
+                bg='SystemButtonFace'
+            )
         # Mark the cell as opened (use is as the last line of this method)
         self.is_opened = True
  
@@ -100,6 +110,7 @@ class Cell:
         self.cell_btn_object.configure(bg='red')
         #a logic do interrupt the game and display a message that player lost!
         ctypes.windll.user32.MessageBoxW(0,'You cliked on a mine', 'Game Over', 0)
+        sys.exit()
        
 
 
