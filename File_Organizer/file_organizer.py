@@ -24,3 +24,5 @@ for file in files:
         #creamos el directorio sino existe y movemos el archivo a El
         os.makedirs(path+'/'+extension)
         shutil.move(path+'/'+file, path+'/'+extension+'/'+file)
+
+        #C:/Users/'Jeinfferson B'/Downloads/prueba
