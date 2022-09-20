@@ -20,4 +20,5 @@ with open('question.txt', 'r') as quesfile, open('answer.txt', 'r') as ansfile:
         else:
             print('Incorrecto')
 
-    print(f'Puntuacion Final: {score}/{len(questions)}'.center(100)) #center. Centra la linea a imprimir
+    #center. Centra la linea a imprimir
+    print(f'Puntuacion Final: {score}/{len(questions)}'.center(100)) 
